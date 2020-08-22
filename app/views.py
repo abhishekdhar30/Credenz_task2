@@ -4,6 +4,17 @@ from django.shortcuts import render,redirect
 from .models import Profile
 from django.contrib import messages
 
+
+
+
+def push(request) :
+    logout (request)
+    messages.success(request,f'Logged out Successfully!!! Login/Signup Again')
+    return redirect('/')
+
+
+
+
 def register(request) :
     if request.method == "POST" :
         uname = request.POST.get ('user')
@@ -56,7 +67,3 @@ def dev(request) :
     return render (request, "app/dev.html")
 
 
-def push(request) :
-    logout (request)
-    messages.success(request,f'Logged out Successfully!!! Login/Signup Again')
-    return redirect('/')
